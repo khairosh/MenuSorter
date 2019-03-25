@@ -18,7 +18,7 @@ public class Khairosh implements ISort {
 				rootItem.setTitle(mainJO.getString("title"));
 			}
 
-			prepareMenu(rootItem, mainJO);
+			buildAndSort(rootItem, mainJO);
 		}
 
 		JSONArray result = new JSONArray();
@@ -26,7 +26,7 @@ public class Khairosh implements ISort {
 //		System.out.println(result);
 	}
 
-	private static void prepareMenu(MenuItem parentItem, JSONObject joParent) {
+	private static void buildAndSort(MenuItem parentItem, JSONObject joParent) {
 		JSONArray ja = joParent.getJSONArray("items");
 		for (int i = 0; i < ja.length(); i++) {
 			JSONObject jo = ja.getJSONObject(i);
@@ -68,7 +68,7 @@ public class Khairosh implements ISort {
 						item.setTitle(jo.getString("title"));
 					}
 
-					prepareMenu(item, jo);
+					buildAndSort(item, jo);
 
 					parentItem.setSum(parentItem.getSum() + item.getSum());
 					boolean added = false;
@@ -95,7 +95,7 @@ public class Khairosh implements ISort {
 		}
 	}
 
-	private static void toJson(MenuItem item, JSONArray parenArr) {
+	private static void toJson(MenuItem item, JSONArray parentArr) {
 		if (item.isParent()) {
 			JSONObject jo = new JSONObject();
 			jo.put("title", item.getTitle());
@@ -104,11 +104,11 @@ public class Khairosh implements ISort {
 				toJson(item.getChildren().get(i), arr);
 			}
 			jo.put("items", arr);
-			parenArr.put(jo);
+			parentArr.put(jo);
 		} else {
 			JSONObject jo = new JSONObject();
 			jo.put("code", item.getCode());
-			parenArr.put(jo);
+			parentArr.put(jo);
 		}
 	}
 }

@@ -1,0 +1,31 @@
+[{
+    "title": "Configuration Management",
+    "items": [{
+            "code": "CFGM-B-100"
+        },
+        {
+            "code": "CFGM-B-120"
+        },
+        {
+            "code": "CFGM-B-130"
+        },
+        {
+            "title": "Тухай",
+            "items": [{
+                "code": "CFGM-B-170"
+            }, {
+                "code": "CFGM-B-900"
+            }]
+        },
+        {
+            "title": "Бусад",
+            "items": [{
+                "code": "CFGM-B-180"
+            }, {
+                "code": "CFGM-B-200"
+            }, {
+                "code": "CFGM-B-210"
+            }]
+        }
+    ]
+}]
